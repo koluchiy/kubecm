@@ -1,0 +1,69 @@
+issues:
+  exclude:
+    - Error return value of `io.WriteString` is not checked
+    - Package github.com/golang/protobuf/jsonpb is deprecated
+    - Package github.com/golang/protobuf/proto is deprecated
+  exclude-rules:
+    - path: vendor/
+      linters:
+        - goimports
+    - path: migrations/
+      linters:
+        - gochecknoinits
+        - funlen
+        - lll
+        - gomnd
+        - dupl
+
+linters:
+  disable-all: true
+  enable:
+    - govet
+    - errcheck
+    - staticcheck
+    - unused
+    - gosimple
+    - structcheck
+    - varcheck
+    - ineffassign
+    - deadcode
+    - typecheck
+    - golint
+    - gosec
+    - unconvert
+    - dupl
+    - goconst
+    - gofmt
+    - goimports
+    - misspell
+    - lll
+    - unparam
+    - dogsled
+    - nakedret
+    - prealloc
+    - gocritic
+    - gochecknoinits
+    - gochecknoglobals
+    - godox
+    - whitespace
+    - funlen
+    #- gomnd
+    - goprintffuncname
+    - scopelint
+    #- nestif
+
+# all available settings of specific linters
+linters-settings:
+  lll:
+    line-length: 150
+    tab-width: 4
+
+  funlen:
+    lines: 100
+    statements: 40
+
+run:
+  timeout: 3m
+  tests: false
+  skip-dirs:
+    - vendor
