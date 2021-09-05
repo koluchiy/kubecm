@@ -6,6 +6,7 @@ import (
 )
 
 const inputSeparator = "::"
+const aliasesSeparator = ","
 
 func buildConfig(source string) (*Config, error) {
 	parts := strings.Split(source, inputSeparator)
@@ -14,7 +15,7 @@ func buildConfig(source string) (*Config, error) {
 	var configContextNames []string
 
 	if len(parts) > 1 {
-		configContextNames = parts[1:]
+		configContextNames = strings.Split(parts[1], aliasesSeparator)
 	}
 	config, err := LoadConfigAsSingle(configPath)
 	if err != nil {
